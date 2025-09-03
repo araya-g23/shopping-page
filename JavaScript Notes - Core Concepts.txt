@@ -1,0 +1,108 @@
+JavaScript Notes - Core Concepts
+===============================
+
+Main Purposes of JavaScript:
+----------------------------
+1. Save and manage data
+2. Generate HTML dynamically
+3. Make web pages interactive
+
+----------------------------------------
+1. Displaying Content with the DOM
+----------------------------------------
+
+To display something on the page using JavaScript, we interact with the DOM (Document Object Model).
+
+Example:
+--------
+document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
+- First, add a class to the HTML element (e.g., class="js-cart-quantity")
+- Use document.querySelector() in JavaScript to select that element
+- Use .innerHTML to change the content
+
+----------------------------------------
+2. Looping Through Data (forEach)
+----------------------------------------
+
+Use an array to store data, then use forEach to loop through it.
+
+Example:
+--------
+let cartQuantity = 0;
+
+cart.forEach((item) => {
+  cartQuantity += item.quantity;
+});
+
+- 'cart' is an array
+- 'item.quantity' gets the quantity from each object in the array
+- Adds all quantities together
+
+----------------------------------------
+3. Adding Event Listeners
+----------------------------------------
+
+To make elements interactive (e.g., respond to clicks):
+
+Steps:
+------
+1. Add a class to the HTML element (e.g., class="js-button")
+2. Select the element using JavaScript
+3. Attach an event listener
+
+Example:
+--------
+const buttonElement = document.querySelector('.js-button');
+
+const eventListener = () => {
+  console.log('click');
+};
+
+buttonElement.addEventListener('click', eventListener);
+
+----------------------------------------
+4. Creating and Displaying HTML
+----------------------------------------
+
+You can generate HTML from JavaScript using template literals.
+
+Steps:
+------
+1. Create a variable to store the HTML (e.g., let productsHTML = '')
+2. Use backticks (`) to write HTML in JS
+3. Use ${} to insert dynamic values
+4. Display the HTML using innerHTML and querySelector
+
+Example:
+--------
+let productsHTML = '';
+
+products.forEach((product) => {
+  productsHTML += `
+    <div class="product-container">
+      <div class="product-image-container">
+        <img class="product-image" src="${product.image}">
+      </div>
+    </div>
+  `;
+});
+
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+- ${product.image} dynamically inserts the image URL
+- .js-products-grid is the HTML element where the content is displayed
+
+----------------------------------------
+Quick Summary Table (Text Format)
+----------------------------------------
+
+Concept               - Description
+----------------------|------------------------------------------------
+querySelector()       - Selects an HTML element using class or ID
+.innerHTML            - Sets or gets the HTML content inside an element
+forEach()             - Loops through each item in an array
+addEventListener()    - Adds interactivity (e.g., clicks, hovers)
+Template Literals     - Allows writing multi-line HTML in JavaScript
+${}                   - Embeds JavaScript variables inside HTML
+
