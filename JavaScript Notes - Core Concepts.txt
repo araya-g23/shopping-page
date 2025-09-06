@@ -8,13 +8,39 @@ Main Purposes of JavaScript:
 3. Make web pages interactive
 
 ----------------------------------------
+✅ How to Use JavaScript Modules (ES6 Modules)
+----------------------------------------
+
+Step 1: Set type="module" in your HTML
+
+Example:
+<script type="module" src="scripts/amazon.js"></script>
+
+- This tells the browser that your JavaScript uses modules.
+- Only use this on the main file where you're importing from other modules.
+
+Step 2: Export from a JavaScript file
+
+Example (data/cart.js):
+export const cart = [];
+
+- Use "export" to share variables or functions from a file.
+
+Step 3: Import into another JavaScript file
+
+Example (scripts/amazon.js):
+import { cart } from '../data/cart.js';
+
+- Use "import" to access exports from another file.
+- Always include the correct path and ".js" extension.
+
+----------------------------------------
 1. Displaying Content with the DOM
 ----------------------------------------
 
 To display something on the page using JavaScript, we interact with the DOM (Document Object Model).
 
 Example:
---------
 document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 
 - First, add a class to the HTML element (e.g., class="js-cart-quantity")
@@ -28,7 +54,6 @@ document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 Use an array to store data, then use forEach to loop through it.
 
 Example:
---------
 let cartQuantity = 0;
 
 cart.forEach((item) => {
@@ -46,13 +71,11 @@ cart.forEach((item) => {
 To make elements interactive (e.g., respond to clicks):
 
 Steps:
-------
 1. Add a class to the HTML element (e.g., class="js-button")
 2. Select the element using JavaScript
 3. Attach an event listener
 
 Example:
---------
 const buttonElement = document.querySelector('.js-button');
 
 const eventListener = () => {
@@ -68,14 +91,12 @@ buttonElement.addEventListener('click', eventListener);
 You can generate HTML from JavaScript using template literals.
 
 Steps:
-------
 1. Create a variable to store the HTML (e.g., let productsHTML = '')
 2. Use backticks (`) to write HTML in JS
 3. Use ${} to insert dynamic values
 4. Display the HTML using innerHTML and querySelector
 
 Example:
---------
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -105,4 +126,6 @@ forEach()             - Loops through each item in an array
 addEventListener()    - Adds interactivity (e.g., clicks, hovers)
 Template Literals     - Allows writing multi-line HTML in JavaScript
 ${}                   - Embeds JavaScript variables inside HTML
+export / import       - Share code/data between modules
+type="module"         - Enables module support in HTML <script>
 
