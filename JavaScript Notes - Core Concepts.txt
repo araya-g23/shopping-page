@@ -115,6 +115,57 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 - .js-products-grid is the HTML element where the content is displayed
 
 ----------------------------------------
+5. Saving and Loading with localStorage
+----------------------------------------
+
+localStorage allows you to save data even after the page reloads.
+
+Steps to Save:
+--------------
+1. Create a function to save your data
+2. Use localStorage.setItem()
+   - Takes 2 strings:
+     1. The key (name)
+     2. The data (must be a string)
+3. Use JSON.stringify() to convert arrays/objects into strings
+
+Example:
+function saveToStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+- You can call this function whenever you update your cart
+- It will save the current cart to localStorage
+
+Steps to Load:
+--------------
+1. At the beginning of your code, get the data from localStorage
+2. Use localStorage.getItem() with the same key
+3. Use JSON.parse() to convert it back into an array or object
+
+Example:
+let cart = JSON.parse(localStorage.getItem('cart'));
+
+- This loads the cart from localStorage
+- If the key doesn’t exist, it returns null
+
+You can combine these ideas inside other functions:
+
+Example:
+export function removeFromCart(productID) {
+  const newCart = [];
+
+  cart.forEach((cartItem) => {
+    if (cartItem.productId !== productID) {
+      newCart.push(cartItem);
+    }
+  });
+
+  cart = newCart;
+  saveToStorage();
+}
+
+----------------------------------------
 Quick Summary Table (Text Format)
 ----------------------------------------
 
@@ -128,4 +179,7 @@ Template Literals     - Allows writing multi-line HTML in JavaScript
 ${}                   - Embeds JavaScript variables inside HTML
 export / import       - Share code/data between modules
 type="module"         - Enables module support in HTML <script>
-
+localStorage.setItem  - Saves a string to the browser's storage
+localStorage.getItem  - Loads a string from the browser's storage
+JSON.stringify()      - Converts array/object into string
+JSON.parse()          - Converts string back into array/object
